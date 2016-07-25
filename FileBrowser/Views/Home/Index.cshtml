@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "Files";
+}
+
+<body ng-app="FileBrowser"  ng-controller="FilesController">
+<script src="~/Scripts/angular-files.api.js"></script>
+    <div class="bottom">
+        <table class="table table-striped table-bordered table-condensed">
+            <tr>
+                <td>
+                    <h4 align="center">Less than 10Mb</h4>
+                </td>
+                <td>
+                    <h4 align="center">10Mb - 50mb</h4>
+                </td>
+                <td>
+                    <h4 align="center">More than 100mb</h4>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h4 align="center">{{filesInfo.CountSmallSize}}</h4>
+                </td>
+                <td>
+                    <h4 align="center">{{filesInfo.CountMediumSize}}</h4>
+                </td>
+                <td>
+                    <h4 align="center">{{filesInfo.CountBigSize}}</h4>
+                </td>
+            </tr>
+        </table>
+        <br/>
+    </div>
+<div class="well">
+   
+    <h3 class="text-info">Current path: {{path}}</h3>
+    <table class="table">
+        <tr>
+            <td>
+                <a href="" class="file" ng-click="openDirectory(filesInfo.ParentDirectory)">...</a>
+            </td>
+        </tr>
+    </table>
+    <table class="table table-hover" ng-repeat="file in filesInfo.Files">
+        <tr>
+            <td>
+                <a href={{file.Name}} class="file" ng-click="openDirectory(file.Name)">{{file.Name}}</a>
+            </td>
+        </tr>
+    </table>
+</div>
+
+</body>
+
